@@ -24,12 +24,30 @@ app.use(logger("dev"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
-app.use(express.static("public"));
+//app.use(express.static("public"));
+
+// Set Handlebars.
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({defaultLayout:"main"}));
+app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
 mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
 
 // Routes
+
+// Use Handlebars to render the main index.html page with the todos in it.
+app.get("/", function(req, res) {
+  // connection.query("SELECT * FROM plans;", function(err, data) {
+  //   if (err) {
+  //     return res.status(500).end();
+  //   }
+
+  //   res.render("index", { plans: data });
+  // });
+  res.render("index");
+});
+
 
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
