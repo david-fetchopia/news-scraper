@@ -11,14 +11,14 @@ $(document).ready(function () {
     });
 
     $(".scrape-new").on("click", function (event) {
-        console.log("New scrape CLICKED!");
+        //console.log("New scrape CLICKED!");
         $.getJSON("/scrape", function(data) {
             console.log(data.length);
         });
     });
 
     $(".clear").on("click", function (event) {
-        console.log("Clear button CLICKED");
+        //console.log("Clear button CLICKED");
         $.ajax({
             method: "DELETE",
             url: "/articles"

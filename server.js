@@ -164,6 +164,9 @@ app.delete("/articles", function(req, res) {
     .catch(function (err) {
       res.json(err);
     })
+    
+    //Cannot find function to delete only isSaved=false articles
+    
   // db.Article.deleteMany({isSaved:'false'}, function(err) {
   //   if (err) {
   //     console.log(err);
